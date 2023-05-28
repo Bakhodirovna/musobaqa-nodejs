@@ -4,6 +4,7 @@ const fs = require('fs');
 
 function express() {
   const routes = [];
+  const middlewares = [];
 
   function get(route, handler) {
     routes.push({ method: 'GET', route, handler });
@@ -19,6 +20,10 @@ function express() {
 
   function del(route, handler) {
     routes.push({ method: 'DELETE', route, handler });
+  }
+
+  function use(middleware) {
+    middlewares.push(middleware);
   }
 
   function listen(port, callback) {
@@ -127,6 +132,7 @@ function express() {
     post,
     put,
     delete: del,
+    use,
     listen
   };
 }

@@ -7,6 +7,11 @@ const path = require('path');
 
 const PORT = process.env.PORT || 3000;
 
+// app.use
+app.use((req, res, next) => {
+  console.log('Middleware executed!');
+  next();
+});
 
 // get method
 app.get('/', (req, res) => {
